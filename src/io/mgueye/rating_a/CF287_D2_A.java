@@ -1,4 +1,4 @@
-// package io.mgueye.rating_a;
+package io.mgueye.rating_a;
 
 import java.io.*;
 import java.util.*;
