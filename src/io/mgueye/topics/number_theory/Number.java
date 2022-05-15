@@ -7,7 +7,6 @@ public class Number {
 
   public ArrayList<Integer> convertDecimalToBinary(int value) {
     ArrayList<Integer> integers = new ArrayList<>();
-
     while (value != 0) {
       int digit = value % 2;
       integers.add(0, digit);
@@ -35,10 +34,9 @@ public class Number {
       intermediate.add(NumberRepresentationMapping.toBinary(integers.get(i).toString(), srcBase));
 
     Collections.reverse(intermediate);
-    inspect(intermediate, ':');
-    for (int i = 0; i < intermediate.size(); i++)
-      for (int j = 0; j < intermediate.get(i).length(); j++)
-        digits.add(Character.getNumericValue(intermediate.get(i).charAt(j)));
+    for (String s : intermediate)
+      for (int j = 0; j < s.length(); j++)
+        digits.add(Character.getNumericValue(s.charAt(j)));
 
     return digits;
   }
@@ -62,6 +60,7 @@ public class Number {
       digits.add(convertBinaryToDecimal(b.toString()));
       start -= shift;
     }
+
     b = new StringBuilder();
     int end = start + (shift - 1),
         missingZeros = shift - 1 - end; // 3(shift) - 1 because end represent position of last index not size;
@@ -71,28 +70,17 @@ public class Number {
     }
     for (int i = 0; i <= end; i++)
       b.append(binary.get(i));
-    if (b.length() > 0) digits.add(convertBinaryToDecimal(b.toString()));
+
+    if (b.length() > 0)
+      digits.add(convertBinaryToDecimal(b.toString()));
+
     Collections.reverse(digits);
+
     return digits;
   }
 
-  public ArrayList<Integer> convertBinaryToHexadecimal(ArrayList<Integer> binary) {
-    return null;
-  }
-
-  public ArrayList<Integer> convertOctalToBinary(ArrayList<Integer> digits) {
-    for (int i = 0; i < digits.size(); i++) {
-    }
-    return null;
-  }
-
-  public ArrayList<Integer> convertHexadecimalToBinary(ArrayList<Integer> hexadecimal) {
-    return null;
-  }
-
-
-  public <T> void inspect(ArrayList<T> digits, char delimiter) {
-    for (T digit : digits) System.out.print(digit);
-    System.out.println(delimiter);
+  public <T> void inspect(ArrayList<T> digits, String delimiter) {
+    for (T digit : digits) System.out.print(digit + delimiter);
+    System.out.println();
   }
 }
