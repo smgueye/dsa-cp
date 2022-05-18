@@ -1,4 +1,4 @@
-package io.mgueye.workout.rating_b.may_001;
+package io.mgueye.workout.rating_b.w001;
 
 import java.io.*;
 import java.util.*;
@@ -10,6 +10,29 @@ public class CF66_D2_B {
   PrintWriter writer;
 
   private void solve() throws IOException {
+    int n = nextInt();
+    int[] a = new int[n];
+    for (int i = 0; i < n; i++)
+      a[i] = nextInt();
+    int maxNbSections = 1;
+    for (int i = 0; i < n; i++) {
+      int currentNbSections = 1;
+      int j = i - 1, h = a[i];
+      while (j >= 0 && a[j] <= h) {
+        currentNbSections++;
+        h = a[j];
+        j--;
+      }
+      j = i + 1;
+      h = a[i];
+      while (j < n && a[j] <= h) {
+        currentNbSections++;
+        h = a[j];
+        j++;
+      }
+      maxNbSections = Math.max(maxNbSections, currentNbSections);
+    }
+    writer.println(maxNbSections);
   }
 
   public static void main(String[] args) {

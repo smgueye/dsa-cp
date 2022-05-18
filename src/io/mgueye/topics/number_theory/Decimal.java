@@ -35,8 +35,8 @@ public class Decimal {
 
   public long fastModularExponentiation(int b, ArrayList<Integer> n, int m) {
     long x = 1, power = b % m;
-    for (int i = 0; i < n.size(); i++) {
-      if (n.get(i) == 1) x *= power;
+    for (Integer integer : n) {
+      if (integer == 1) x *= power;
       power += power;
     }
     return x;

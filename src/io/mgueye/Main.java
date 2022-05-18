@@ -10,6 +10,6 @@ public class Main {
 
   public static void main(String[] args) {
     Number number = new Number();
-    number.inspect(new Decimal(11).toBase(2), "");
+    number.inspect(new Decimal(1001).toBase(2), " ");
   }
 }
